@@ -15,7 +15,7 @@ def generate_wordcloud(text, save_path, font_path=None):
 
     WordCloud(background_color='white', width=590, height=700,
               font_path=font_path, max_font_size=None,
-              regexp=r"\w[_|-|\w']+"  # include hypthen and underscore
+              regexp=r"\w[\w'|()._-]+"  # include symbols
               ).generate(text).to_file(save_path)
 
 
