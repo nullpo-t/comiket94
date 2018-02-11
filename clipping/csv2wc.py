@@ -20,7 +20,7 @@ def generate_wordcloud(text, save_path, font_path=None):
 
 
 if __name__ == '__main__':
-    # font_path = '/System/Library/Fonts/ヒラギノ角ゴシック W3.ttc'  # macOS
+    font_path = '/System/Library/Fonts/ヒラギノ角ゴシック W3.ttc'  # macOS
     csv_path = './wordlist.csv'
     output_path = './clipping.png'
     generate_wordcloud(conv_csv_wctext(csv_path), output_path, font_path)
