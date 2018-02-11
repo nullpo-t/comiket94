@@ -11,15 +11,16 @@ def conv_csv_wctext(csv_path):
     return(s)
 
 
-def generate_wordcloud(text, save_path,
-                       font_path='/System/Library/Fonts/ヒラギノ角ゴシック W3.ttc'):
+def generate_wordcloud(text, save_path, font_path=None):
 
-    WordCloud(background_color='white', width=600, height=800,
+    WordCloud(background_color='white', width=590, height=700,
               font_path=font_path, max_font_size=None,
-              regexp=r"\w[-|\w']+"
+              regexp=r"\w[_|-|\w']+"  # include hypthen and underscore
               ).generate(text).to_file(save_path)
 
 
 if __name__ == '__main__':
-    s = conv_csv_wctext('wordlist.csv')
-    generate_wordcloud(s, 'clipping.png')
+    # font_path = '/System/Library/Fonts/ヒラギノ角ゴシック W3.ttc'  # macOS
+    csv_path = './wordlist.csv'
+    output_path = './clipping.png'
+    generate_wordcloud(conv_csv_wctext(csv_path), output_path, font_path)
