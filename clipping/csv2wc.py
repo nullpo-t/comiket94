@@ -1,3 +1,4 @@
+import random
 import csv
 from wordcloud import WordCloud
 
@@ -7,8 +8,13 @@ def conv_csv_wctext(csv_path):
     with open(csv_path) as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
-            s += (row['word'] + ',') * int(row['count'])
+            s += (row['word'] + ' ') * int(row['count'])
     return(s)
+
+
+def randomize(text):
+    l = text.split(' ')
+    return ' '.join(random.sample(l,len(l)))
 
 
 def generate_wordcloud(text, save_path, font_path=None):
@@ -23,4 +29,7 @@ if __name__ == '__main__':
     font_path = '/System/Library/Fonts/ヒラギノ角ゴシック W3.ttc'  # macOS
     csv_path = './wordlist.csv'
     output_path = './clipping.png'
-    generate_wordcloud(conv_csv_wctext(csv_path), output_path, font_path)
+
+    text = randomize(conv_csv_wctext(csv_path))
+    generate_wordcloud(text, output_path, font_path)
+
