@@ -30,17 +30,17 @@ def mono_color_func(word, font_size, position, orientation, random_state=None,
     return "hsl(0, 0%%, %d%%)" % 0  # monochrome
 
 
-def filepath_add_timestamp(path):
+def add_timestamp(filepath):
     now = datetime.now(timezone(timedelta(), 'UTC'))
-    tmp = path.split('.')
+    tmp = filepath.split('.')
     return "{0}_{1:%Y%m%dT%H%M%SZ}.{2}".format('.'.join(tmp[:-1]), now, tmp[-1])
 
 
 if __name__ == '__main__':
     font_path = '/System/Library/Fonts/ヒラギノ角ゴシック W3.ttc'  # macOS
     csv_path = './wordlist.csv'
-    color_output_path = filepath_add_timestamp('./clipping_color.png')
-    mono_output_path = filepath_add_timestamp('./clipping_mono.png')
+    color_output_path = add_timestamp('./clipping_color.png')
+    mono_output_path = add_timestamp('./clipping_mono.png')
 
     text = randomize(conv_csv_wctext(csv_path))
     wc = generate_wordcloud(text, font_path)
