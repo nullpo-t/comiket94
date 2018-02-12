@@ -9,7 +9,7 @@ def conv_csv_wctext(csv_path):
     with open(csv_path) as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
-            s += (row['word'] + ' ') * int(row['count'])
+            s += (row['word'] + ' ') * int(row['frequency'])
     return(s)
 
 
