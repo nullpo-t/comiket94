@@ -20,7 +20,7 @@ def randomize(text):
 
 def generate_wordcloud(text, font_path=None):
     return WordCloud(background_color='white', width=590, height=700,
-                     font_path=font_path, max_font_size=None,
+                     font_path=font_path, max_font_size=128,
                      regexp=r"\w[\w'|()._-]+"  # include symbols
                      ).generate(text)
 
@@ -39,8 +39,8 @@ def add_timestamp(filepath):
 if __name__ == '__main__':
     font_path = '/System/Library/Fonts/ヒラギノ角ゴシック W3.ttc'  # macOS
     csv_path = './wordlist.csv'
-    color_output_path = add_timestamp('./clipping_color.png')
-    mono_output_path = add_timestamp('./clipping_mono.png')
+    color_output_path = add_timestamp('./output/clipping_color.png')
+    mono_output_path = add_timestamp('./output/clipping_mono.png')
 
     text = randomize(conv_csv_wctext(csv_path))
     wc = generate_wordcloud(text, font_path)
