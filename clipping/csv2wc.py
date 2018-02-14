@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from datetime import datetime, timedelta, timezone
 import random
 import csv
@@ -10,7 +12,7 @@ def conv_csv_wctext(csv_path):
         reader = csv.DictReader(csvfile)
         for row in reader:
             s += (row['word'] + ' ') * int(row['frequency'])
-    return(s)
+    return s
 
 
 def randomize(text):
@@ -25,8 +27,7 @@ def generate_wordcloud(text, font_path=None):
                      ).generate(text)
 
 
-def mono_color_func(word, font_size, position, orientation, random_state=None,
-                    **kwargs):
+def mono_color_func(word, font_size, position, orientation, random_state=None, **kwargs):
     return "hsl(0, 0%%, %d%%)" % 0  # monochrome
 
 
