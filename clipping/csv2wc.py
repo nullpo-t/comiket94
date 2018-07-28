@@ -1,4 +1,6 @@
-# -*- coding: utf-8 -*-
+__author__ = 'ebiiim'
+__copyright__ = 'Copyright 2018, ぬるぽ帝国'
+__license__ = 'MIT'
 
 from datetime import datetime, timedelta, timezone
 import random
